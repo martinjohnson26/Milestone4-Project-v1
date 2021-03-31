@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
+    background: url('/media/background_homepage.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
@@ -21,6 +21,7 @@ body {
 
 .logo-font {
     text-transform: uppercase;
+    font-size: 1 rem;
 }
 
 .main-logo-link {
