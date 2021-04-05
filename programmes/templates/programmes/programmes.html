@@ -26,12 +26,12 @@
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-0">
                                 {% if programme.image %}
-                                <a href="">
-                                    <img class="card-img-top img-fluid" src="{{ programme.image.url }}" alt="{{ programme.name }}">
+                                <a href="{% url 'programme_info' programme.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ programme.image.url }}" alt="{{ programme.fixture }}">
                                 </a>
                                 {% else %}
-                                <a href="">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ programme.name }}">
+                                <a href="{% url 'programme_info' programme.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ programme.fixture }}">
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
@@ -42,9 +42,9 @@
                                         <div class="col">
                                             <p class="lead mb-0 text-left font-weight-bold">${{ programme.price }}</p>
                                             {% if programme.condition %}
-                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ programme.condition }}</small>
+                                                <small class="text-muted">Condition: {{ programme.condition }}</small>
                                             {% else %}
-                                                <small class="text-muted">Condition not stated</small>
+                                                <small class="text-muted">Condition:  Not stated</small>
                                             {% endif %}
                                         </div>
                                     </div>
