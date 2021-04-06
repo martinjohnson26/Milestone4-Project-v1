@@ -18,11 +18,12 @@
                 England
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="england-link">
-                <a href="" class="dropdown-item">Friendlies</a>
-                <a href="" class="dropdown-item">Home Internationals</a>
-                <a href="" class="dropdown-item">Euro Qualifiers</a>
-                <a href="" class="dropdown-item">World Cup Qualifiers</a>
-                <a href="" class="dropdown-item">Euro 96</a>
+                <a href="{% url 'programmes' %}?category=friendlies" class="dropdown-item">Friendlies</a>
+                <a href="{% url 'programmes' %}?category=home_ints" class="dropdown-item">Home Internationals</a>
+                <a href="{% url 'programmes' %}?category=euro_qual" class="dropdown-item">Euro Qualifiers</a>
+                <a href="{% url 'programmes' %}?category=wc_qual" class="dropdown-item">World Cup Qualifiers</a>
+                <a href="{% url 'programmes' %}?category=euros" class="dropdown-item">Euro 96</a>
+                <a href="{% url 'programmes' %}?category=friendlies,home_ints,euro_qual,wc_qual,euros" class="dropdown-item">All England at Wembley</a>
             </div>
         </li>
 
@@ -31,9 +32,10 @@
                 Finals
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="finals-link">
-                <a href="" class="dropdown-item">FA Cup Finals</a>
-                <a href="" class="dropdown-item">League Cup Finals</a>
-                <a href="" class="dropdown-item">Play off Finals</a>
+                <a href="{% url 'programmes' %}?category=fa_cupfinals" class="dropdown-item">FA Cup Finals</a>
+                <a href="{% url 'programmes' %}?category=league_cupfinals" class="dropdown-item">League Cup Finals</a>
+                <a href="{% url 'programmes' %}?category=play_offs" class="dropdown-item">Play off Finals</a>
+                 <a href="{% url 'programmes' %}?category=fa_cupfinals,league_cupfinals,play_offs" class="dropdown-item">All Finals</a>
             </div>
         </li>
 
@@ -42,8 +44,9 @@
                 Other Matches
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="other-wembley-link">
-                <a href="" class="dropdown-item">Charity Shield</a>
-                <a href="" class="dropdown-item">FA Cup Semi Finals</a>
+                <a href="{% url 'programmes' %}?category=charity_shield" class="dropdown-item">Charity Shield</a>
+                <a href="{% url 'programmes' %}?category=cup_semis" class="dropdown-item">FA Cup Semi Finals</a>
+                <a href="{% url 'programmes' %}?category=charity_shield,cupsemis" class="dropdown-item">All Other Matches</a>
             </div>
         </li>
 
@@ -52,9 +55,10 @@
                 Non Wembley
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="non-wembley-link">
-                <a href="" class="dropdown-item">England Away</a>
-                <a href="" class="dropdown-item">England on the Road</a>
-                <a href="" class="dropdown-item">Misc/Clearance</a>
+                <a href="{% url 'programmes' %}?category=england_away" class="dropdown-item">England Away</a>
+                <a href="{% url 'programmes' %}?category=england_road" class="dropdown-item">England on the Road</a>
+                <a href="{% url 'programmes' %}?category=misc_clear" class="dropdown-item">Misc/Clearance</a>
+                <a href="{% url 'programmes' %}?category=england_away,england_road,misc_clear" class="dropdown-item">All Non Wembley</a>
             </div>
         </li>
     </ul>
