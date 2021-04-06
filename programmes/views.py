@@ -12,8 +12,23 @@ def all_programmes(request):
     programmes = Programme.objects.all()
     query = None
     categories = None
+    sort = None
+    direction = None
 
     if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                programmes = programmes.annotate(lower_name=Lower('name'))
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            programmes = programmes.order_by(sortkey)
+
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             programmes = programmes.filter(category__name__in=categories)
@@ -25,14 +40,17 @@ def all_programmes(request):
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('programmes'))
 
-            queries = Q(fixture__icontains=query) | Q(date__icontains=query)
+            queries = Q(name__icontains=query) | Q(fixture__icontains=query)
             programmes = programmes.filter(queries)
+
+    current_sorting = f'{sort}_{direction}'
 
 
     context = {
         'programmes': programmes,
         'search_term': query,
         'current_categories': categories,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'programmes/programmes.html', context)
