@@ -30,8 +30,8 @@
                         <div class="sort-select-wrapper w-50">
                             <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-                                <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>By Price High to Low</option>
-                                <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>By Price Low to High</option>
+                                <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>By Price Low to High</option>
+                                <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>By Price High to Low</option>
                                 <option value="fixture_asc" {% if current_sorting == 'fixture_asc' %}selected{% endif %}>By Club/Country A-Z</option>
                                 <option value="fixture_desc" {% if current_sorting == 'fixture_desc' %}selected{% endif %}>By Club/Country Z-A</option>
                             </select>
