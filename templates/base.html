@@ -70,7 +70,7 @@
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
-                            <a href="" class="dropdown-item">Product Management</a>
+                            <a href="" class="dropdown-item">Programme Management</a>
                             {% endif %}
                             <a href="" class="dropdown-item">My Profile</a>
                             <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -82,9 +82,9 @@
                     </li>
                     <li class="list-inline-item">
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
-                            href="">
+                            href="{% url 'view_cart' %}">
                             <div class="text-center">
-                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                <div><i class="fas fa-shopping-cart fa-lg"></i></div>
                                 <p class="my-0">
                                     {% if grand_total %}
                                     ${{ grand_total|floatformat:2 }}
