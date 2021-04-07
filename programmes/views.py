@@ -59,10 +59,10 @@ def all_programmes(request):
 def programme_info(request, programme_id):
     """ Displays individual programme info """
 
-    programmes = get_object_or_404(Programme, pk=programme_id)
+    programme = get_object_or_404(Programme, pk=programme_id)
 
     context = {
-        'programme': Programme,
+        'programme': programme,
     }
 
     return render(request, 'programmes/programme_info.html', context)
