@@ -40,7 +40,7 @@ def all_programmes(request):
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('programmes'))
 
-            queries = Q(name__icontains=query) | Q(fixture__icontains=query)
+            queries = Q(sku__icontains=query) | Q(fixture__icontains=query)
             programmes = programmes.filter(queries)
 
     current_sorting = f'{sort}_{direction}'

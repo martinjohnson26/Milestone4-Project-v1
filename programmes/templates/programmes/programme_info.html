@@ -29,6 +29,14 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="programme-info-container mb-5 mt-md-5">
                     <p class="mb-0">{{ programme.fixture }}</p>
+                    {% if programme.category %}
+                        <p class="small mt-1 mb-0">
+                        <a class="text-muted"
+                            href="{% url 'programmes' %}?category={{ programme.category.name }}">
+                            <i class="fas fa-futbol mr-1"></i>{{ programme.category.friendly_name }}
+                        </a>
+                        </p>
+                    {% endif %}                    
                     <p class="lead mb-0 text-left font-weight-bold">${{ programme.price }}</p>
                     {% if programme.condition %}
                         <small class="text-muted"><i class="fas fa-star mr-1"></i>Condition: {{ programme.condition }}</small>
