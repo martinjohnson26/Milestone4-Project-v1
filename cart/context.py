@@ -4,7 +4,7 @@ from django.conf import settings
 
 def cart_contents(request):
 
-    bag_items = []
+    cart_items = []
     total = 0
     product_count = 0
 
@@ -19,7 +19,7 @@ def cart_contents(request):
 
 
     context = {
-        'bag_items': bag_items,
+        'cart_items': cart_items,
         'total': total,
         'product_count': product_count,
         'postage': postage,
