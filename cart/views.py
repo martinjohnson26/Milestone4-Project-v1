@@ -36,8 +36,10 @@ def adjust_cart(request, item_id):
 
     if quantity > 0:
         cart[item_id] = quantity
+        messages.success(request, f'Updated {programme.fixture} quantity to {bag[item_id]}')
     else:
         cart.pop(item_id)
+        messages.success(request, f'Removed {programme.fixture} from your bag')
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
@@ -49,6 +51,7 @@ def remove_from_cart(request, item_id):
         cart = request.session.get('cart', {})
 
         cart.pop(item_id)
+        messages.success(request, f'Removed {programme.fixture} from your bag')
 
         request.session['cart'] = cart
         return HttpResponse(status=200)
