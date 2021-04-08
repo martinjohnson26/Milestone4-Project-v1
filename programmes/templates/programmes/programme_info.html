@@ -91,3 +91,8 @@
         </div>
     </div>
 {% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'programmes/includes/quantity_buttons_script.html' %}
+{% endblock %}
