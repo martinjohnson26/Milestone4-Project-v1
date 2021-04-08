@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
-
+from django.contrib import messages
 # Create your views here.
+from programmes.models import Programme
 
 
 def view_cart(request):
@@ -12,6 +13,7 @@ def view_cart(request):
 def add_to_cart(request, item_id):
     """ Add a quantity of the specified programme to the shopping cart """
 
+    programme = Programme.objects.get(pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
@@ -20,6 +22,7 @@ def add_to_cart(request, item_id):
         cart[item_id] += quantity
     else:
         cart[item_id] = quantity
+        messages.success(request, f'Added {programme.fixture} to your cart')
 
     request.session['cart'] = cart
     return redirect(redirect_url)
