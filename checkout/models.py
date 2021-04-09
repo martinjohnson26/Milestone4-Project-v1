@@ -4,6 +4,8 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 
+from programmes.models import Programme
+
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
@@ -29,7 +31,7 @@ class Order(models.Model):
         Generate a random, unique order number using UUID
         """
         return uuid.uuid4().hex.upper()
-    
+
 
     def update_total(self):
         """
