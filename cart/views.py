@@ -52,9 +52,7 @@ def remove_from_cart(request, item_id):
     try:
         programme = get_object_or_404(Programme, pk=item_id)
         cart = request.session.get('cart', {})
-        print(cart)
-        print(item_id)
-
+        
         cart.pop(item_id)
         messages.success(request, f'Removed {programme.fixture} from your cart')
 
