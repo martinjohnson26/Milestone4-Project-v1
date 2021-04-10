@@ -27,7 +27,7 @@ def cart_contents(request):
     else:
         postage = 0
         free_postage_delta = 0
-    
+
     grand_total = postage + total
 
 
