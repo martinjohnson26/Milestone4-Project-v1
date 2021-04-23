@@ -24,7 +24,7 @@ def all_programmes(request):
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 programmes = programmes.annotate(lower_name=Lower('name'))
-            
+
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
@@ -39,14 +39,14 @@ def all_programmes(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(request,
+                               "You didn't enter any search criteria!")
                 return redirect(reverse('programmes'))
 
             queries = Q(sku__icontains=query) | Q(fixture__icontains=query)
             programmes = programmes.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
-
 
     context = {
         'programmes': programmes,
@@ -71,8 +71,19 @@ def programme_info(request, programme_id):
 
 
 def add_programme(request):
-    """ Add a product to the store """
-    form = ProgrammeForm()
+    """ Add a programme to the store """
+    if request.method == 'POST':
+        form = ProgrammeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added programme!')
+            return redirect(reverse('add_programme'))
+        else:
+            messages.error(request, 'Failed to add programme.Please ensure the form is valid.')
+
+    else:
+        form = ProgrammeForm()
+
     template = 'programmes/add_programme.html'
     context = {
         'form': form,
