@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Programme, Category
+from .forms import ProgrammeForm
 
 # Create your views here.
 
@@ -67,3 +68,14 @@ def programme_info(request, programme_id):
     }
 
     return render(request, 'programmes/programme_info.html', context)
+
+
+def add_programme(request):
+    """ Add a product to the store """
+    form = ProgrammeForm()
+    template = 'programmes/add_programme.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
