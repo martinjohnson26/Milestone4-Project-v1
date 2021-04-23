@@ -9,7 +9,7 @@ from .models import Order, OrderLineItem
 from programmes.models import Programme
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
-from cart.contexts import cart_contents
+from cart.context import cart_contents
 
 import stripe
 import json

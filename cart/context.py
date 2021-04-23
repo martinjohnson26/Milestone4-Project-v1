@@ -30,7 +30,6 @@ def cart_contents(request):
 
     grand_total = postage + total
 
-
     context = {
         'cart_items': cart_items,
         'total': total,
