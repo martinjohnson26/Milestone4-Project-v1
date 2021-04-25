@@ -83,6 +83,12 @@
                                     {% else %}
                                     <small class="text-muted">Condition: Not stated</small>
                                     {% endif %}
+                                    {% if request.user.is_superuser %}
+                                         <small class="ml-3">
+                                            <a href="{% url 'edit_programme' programme.id %}">Edit</a> | 
+                                            <a class="text-danger" href="{% url 'delete_programme' programme.id %}">Delete</a>
+                                        </small>       
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

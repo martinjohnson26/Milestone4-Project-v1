@@ -75,12 +75,11 @@ def add_programme(request):
     if request.method == 'POST':
         form = ProgrammeForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            programme = form.save()
             messages.success(request, 'Successfully added programme!')
-            return redirect(reverse('add_programme'))
+            return redirect(reverse('programme_detail', args=[programme.id]))
         else:
-            messages.error(request, 'Failed to add programme.Please ensure the form is valid.')
-
+            messages.error(request, 'Failed to add programme. Please ensure the form is valid.')
     else:
         form = ProgrammeForm()
 
@@ -114,3 +113,11 @@ def edit_programme(request, programme_id):
     }
 
     return render(request, template, context)
+
+
+def delete_programme(request, programme_id):
+    """ Delete a programme from the store """
+    programme = get_object_or_404(Programme, pk=programme_id)
+    programme.delete()
+    messages.success(request, 'Programme deleted!')
+    return redirect(reverse('programmes'))
