@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Programme, Category
@@ -70,6 +71,7 @@ def programme_info(request, programme_id):
     return render(request, 'programmes/programme_info.html', context)
 
 
+@login_required
 def add_programme(request):
     """ Add a programme to the store """
     if request.method == 'POST':
@@ -91,6 +93,7 @@ def add_programme(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_programme(request, programme_id):
     """ Edit a programme in the store """
     programme = get_object_or_404(Programme, pk=programme_id)
@@ -115,6 +118,7 @@ def edit_programme(request, programme_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_programme(request, programme_id):
     """ Delete a programme from the store """
     programme = get_object_or_404(Programme, pk=programme_id)
