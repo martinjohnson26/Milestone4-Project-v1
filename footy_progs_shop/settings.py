@@ -23,7 +23,7 @@ SECRET_KEY = '_wze^^#bf)*-l&+-3zw)@90_#3817a8e4yi1cn$_j96x&lda!4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mtj-footy-progs-shop.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -117,13 +117,17 @@ WSGI_APPLICATION = 'footy_progs_shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
- DATABASES = {
-    'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-     }
- }
-
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
