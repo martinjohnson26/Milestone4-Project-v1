@@ -23,7 +23,7 @@ SECRET_KEY = '_wze^^#bf)*-l&+-3zw)@90_#3817a8e4yi1cn$_j96x&lda!4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mtj-footy-progs-shop.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['footy-progs-shop.herokuapp.com', 'localhost']
 
 
 # Application definition
